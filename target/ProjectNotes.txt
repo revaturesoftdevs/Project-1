@@ -26,8 +26,8 @@ An Employee can:
 •Logout.
 •Submit a reimbursement request.
 •View their pending reimbursement requests.
-•Viewtheir resolved reimbursement requests.
-•Viewtheir information.•Update their information.
+•View their resolved reimbursement requests.
+•View their information.•Update their information.
 
 A Manager can:
 •Login.
@@ -39,13 +39,13 @@ A Manager can:
 •View reimbursement requests of a specific employee.
 •View all employees.OptionalRequirements
 
-An Employeecan:
+An Employee can:
 •Upload an image of his/her receipt as part of the reimbursement request.
-•Receivean email when one of their reimbursement requests is resolved.
-•Resettheir password.
+•Receive an email when one of their reimbursement requests is resolved.
+•Reset their password.
 
 A Manager can:
-•View animage of the receipt of a reimbursement request.
+•View an image of the receipt of a reimbursement request.
 •Register an employee and send an email to that employee with his credentials. 
 
 Technologies
@@ -63,3 +63,6 @@ Technologies
 •Log4jEnvironment
 •Tomcat
 •Postgres Database
+
+
+https://appuals.com/how-to-fix-git-error-your-local-changes-to-the-following-files-will-be-overwritten-by-merge/

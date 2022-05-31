@@ -8,7 +8,7 @@ public class ReimbursementPojo {
 	int emp_id;
 	int mgr_id;
 	String reimbursement_desc;
-	Double reimbursement_amt;
+	double reimbursement_amt;
 	String reimbursement_status;
 	
 
