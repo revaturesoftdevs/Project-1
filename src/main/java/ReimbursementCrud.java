@@ -12,7 +12,7 @@ public class ReimbursementCrud {
 		// create an object of service layer to call its methods in each endpoint method
 		ReimbursementService reimbursementService = new ReimbursementServiceImpl();
 		
-		// cors enabled here so that any ncoming request from a different domain is accepted
+		// cors enabled here so that any incoming request from a different domain is accepted
 		Javalin server = Javalin.create((config)->config.enableCorsForAllOrigins()); // javalin creates the jetty server (the default ), we can change the internal server if we want to
 		server.start(7070); // javlin starts the server at port 7474
 
@@ -21,10 +21,10 @@ public class ReimbursementCrud {
 		
 		// will not using this anymore
 		// this is just a demo
-		server.get("/hello", (ctx)->{
-			System.out.println("hello endpoint called....");
-			ctx.result("hello returned from the endpoint");
-		});
+//		server.get("/hello", (ctx)->{
+//			System.out.println("hello endpoint called....");
+//			ctx.result("hello returned from the endpoint");
+//		});
 		
 		
 		// let's create the other endpoints
@@ -50,7 +50,16 @@ public class ReimbursementCrud {
 		
 		// Delete
 		
-		// Post
+		// Post add book
+		// http://localhost:7070/allReimb
+		server.post("/allReimb", (ctx)->{
+		
+			ReimbursementPojo newReimbursement = ctx.bodyAsClass(ReimbursementPojo.class);
+			ReimbursementPojo returnedReimbursementPojo = reimbursementService.addReimbursment(newReimbursement);
+			
+			ctx.json(returnedReimbursementPojo);
+			
+		});
 		
 		// Put
 	}

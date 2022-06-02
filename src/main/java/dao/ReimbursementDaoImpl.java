@@ -19,7 +19,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			Statement stmt = con.createStatement();
 			
 			String query = "INSERT INTO reimbursment_details(emp_id,mgr_id,reimbursment_desc,reimbursment_amt,reimbursment_status)"
-							+"VALUES("+reimburse.getEmp_id()+","+reimburse.getMgr_id()+","+reimburse.getReimbursement_amt()+",'"+reimburse.getReimbursement_status()+"')";
+							+"VALUES("+reimburse.getEmp_id()+","+reimburse.getMgr_id()+",'"+reimburse.getReimbursement_desc()+"',"+reimburse.getReimbursement_amt()+",'"+reimburse.getReimbursement_status()+"')";
 			ResultSet rs = stmt.executeQuery(query);
 			
 			rs.next();
