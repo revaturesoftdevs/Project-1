@@ -1,0 +1,67 @@
+package service;
+
+import java.util.List;
+
+import dao.ManagerDao;
+import dao.ManagerDaoImpl;
+import exception.EmptyStoreException;
+import exception.SystemException;
+import model.EmployeePojo;
+import model.ManagerPojo;
+import model.ReimbursementPojo;
+
+public class ManagerServiceImpl implements ManagerService {
+
+	ManagerDao managerDao;
+
+	public ManagerServiceImpl() {
+		managerDao = new ManagerDaoImpl();
+	}
+
+	public ManagerDao getManagerDao() {
+		return managerDao;
+	}
+
+	public void setManagerDao(ManagerDao managerDao) {
+		this.managerDao = managerDao;
+	}
+
+	@Override
+	public ManagerPojo Login(ManagerPojo managerPojo) throws SystemException {
+		return managerDao.Login(managerPojo);
+	}
+
+	@Override
+	public List<ReimbursementPojo> viewAllPendingReimbursements(int mgr_id)
+			throws SystemException {
+		return managerDao.viewAllPendingReimbursements(mgr_id);
+	}
+
+	@Override
+	public List<ReimbursementPojo> viewAllResolvedReimbursements(int mgr_id)
+			throws SystemException, EmptyStoreException {
+		return managerDao.viewAllResolvedReimbursements(mgr_id);
+	}
+
+	@Override
+	public List<ReimbursementPojo> viewIndividualReimbursement(int mgr_id, int emp_id)
+			throws SystemException, EmptyStoreException {
+		return managerDao.viewIndividualReimbursement(mgr_id, emp_id);
+	}
+
+
+	@Override
+	public boolean approveReimbursement(int emp_id,int reimbursement_id) throws SystemException {
+		return managerDao.approveReimbursement(emp_id, reimbursement_id);
+	}
+
+	@Override
+	public boolean denyReimbursement(int emp_id,int reimbursement_id) throws SystemException {
+		return managerDao.denyReimbursement(emp_id,reimbursement_id);
+	}
+
+	@Override
+	public List<EmployeePojo> viewAllEmployees(int mgr_id) throws SystemException, EmptyStoreException {
+		return managerDao.viewAllEmployees(mgr_id);
+	}
+}

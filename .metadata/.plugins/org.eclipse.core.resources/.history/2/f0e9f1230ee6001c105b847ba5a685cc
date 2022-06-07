@@ -1,0 +1,111 @@
+package model;
+
+import java.util.Objects;
+
+public class EmployeePojo {
+	
+	//testing
+	int empId; 
+	int mgrId;
+	String empFirstName;
+	String empLastName;
+	String empUserName;
+	String empPassword;
+	
+
+
+	public EmployeePojo() {
+		super();
+	}
+
+	public EmployeePojo(int emp_id, int mgr_id, String emp_firstName, String emp_lastName, String emp_username,
+			String emp_password) {
+		super();
+		this.empId = emp_id;
+		this.mgrId = mgr_id;
+		this.empFirstName = emp_firstName;
+		this.empLastName = emp_lastName;
+		this.empUserName = emp_username;
+		this.empPassword = emp_password;
+	}
+
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(int emp_id) {
+		this.empId = emp_id;
+	}
+
+	public int getMgrId() {
+		return mgrId;
+	}
+
+	public void setMgrId(int mgr_id) {
+		this.mgrId = mgr_id;
+	}
+
+	public String getEmpFirstName() {
+		return empFirstName;
+	}
+
+	public void setEmpFirstName(String emp_firstName) {
+		this.empFirstName = emp_firstName;
+	}
+
+	public String getEmpLastName() {
+		return empLastName;
+	}
+
+	public void setEmpLastName(String emp_lastName) {
+		this.empLastName = emp_lastName;
+	}
+
+	public String getEmpUserName() {
+		return empUserName;
+	}
+
+	public void setEmpUserName(String emp_username) {
+		this.empUserName = emp_username;
+	}
+
+	public String getEmpPassword() {
+		return empPassword;
+	}
+
+	public void setEmpPassword(String emp_password) {
+		this.empPassword = emp_password;
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(empFirstName, empId, empLastName, empPassword, empUserName, mgrId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmployeePojo other = (EmployeePojo) obj;
+		return Objects.equals(empFirstName, other.empFirstName) && empId == other.empId
+				&& Objects.equals(empLastName, other.empLastName) && Objects.equals(empPassword, other.empPassword)
+				&& Objects.equals(empUserName, other.empUserName) && mgrId == other.mgrId;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeePojo [emp_id=" + empId + ", mgr_id=" + mgrId + ", emp_firstName=" + empFirstName
+				+ ", emp_lastName=" + empLastName + ", empUserName=" + empUserName + ", empPassword=" + empPassword
+				+ "]";
+	}
+	
+	
+	
+	
+}

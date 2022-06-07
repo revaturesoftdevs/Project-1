@@ -1,0 +1,24 @@
+package dao;
+
+import java.util.List;
+
+import exception.EmptyStoreException;
+import exception.SystemException;
+import model.EmployeePojo;
+import model.ManagerPojo;
+import model.ReimbursementPojo;
+
+public interface ManagerDao {
+	
+	ManagerPojo Login(ManagerPojo managerPojo) throws SystemException;
+	List<ReimbursementPojo> viewAllPendingReimbursements(int mgr_id) throws SystemException;
+	List<ReimbursementPojo> viewAllResolvedReimbursements(int mgr_id) throws SystemException, EmptyStoreException;
+	List<ReimbursementPojo> viewIndividualReimbursement(int mgr_id, int emp_id) throws SystemException, EmptyStoreException;
+//	boolean deleteReimbursement(ReimbursementPojo reimbursementPojo);
+	List<EmployeePojo> viewAllEmployees(int mgr_id) throws SystemException, EmptyStoreException;
+	boolean approveReimbursement(int emp_id,int reimbursement_id) throws SystemException;
+	boolean denyReimbursement(int emp_id,int reimbursement_id) throws SystemException;
+//	EmployeePojo viewEmployeeProfile(EmployeePojo employeePojo);
+//	EmployeePojo modifyEmployee(EmployeePojo employeePojo);
+
+}

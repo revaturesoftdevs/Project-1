@@ -1,0 +1,25 @@
+package service;
+
+import java.util.List;
+
+import exception.EmptyStoreException;
+import exception.SystemException;
+import model.EmployeePojo;
+import model.ManagerPojo;
+import model.ReimbursementPojo;
+
+public interface ManagerService {
+	
+	ManagerPojo Login(ManagerPojo managerPojo) throws SystemException;
+	List<ReimbursementPojo> viewAllPendingReimbursements(int mgrId) throws SystemException;
+	List<ReimbursementPojo> viewAllResolvedReimbursements(int mgrId) throws SystemException, EmptyStoreException;
+	List<ReimbursementPojo> viewIndividualReimbursement(int mgr_id, int emp_id) throws SystemException, EmptyStoreException;
+	boolean approveReimbursement(int emp_id,int reimbursement_id) throws SystemException;
+	boolean denyReimbursement(int emp_id,int reimbursement_id) throws SystemException;
+//	boolean deleteReimbursement(ReimbursementPojo reimbursementPojo);
+	List<EmployeePojo> viewAllEmployees(int mgr_id) throws SystemException, EmptyStoreException;
+//	EmployeePojo viewEmployeeProfile(EmployeePojo employeePojo);
+//	EmployeePojo modifyEmployee(EmployeePojo employeePojo);
+
+
+}

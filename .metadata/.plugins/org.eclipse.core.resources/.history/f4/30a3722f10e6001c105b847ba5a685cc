@@ -1,0 +1,123 @@
+package model;
+
+import java.util.Objects;
+
+public class ReimbursementPojo {
+	
+	int reimbursementId;
+	int empId;
+	int mgrId;
+	String reimbursementDesc;
+	Double reimbursementAmt;
+	String reimbursementStatus;
+	
+
+
+	public ReimbursementPojo() {
+		
+	}
+
+	
+	public ReimbursementPojo(int empId, int mgrId, String reimbursementDesc, Double reimbursementAmt,
+			String reimbursementStatus) {
+		
+		this.empId = empId;
+		this.mgrId = mgrId;
+		this.reimbursementDesc = reimbursementDesc;
+		this.reimbursementAmt = reimbursementAmt;
+		this.reimbursementStatus = reimbursementStatus;
+	}
+
+
+	public ReimbursementPojo(int reimbursementId, int empId, int mgrId, String reimbursementDesc,
+			Double reimbursement_amt, String reimbursement_status) {
+		
+		this.reimbursementId = reimbursementId;
+		this.empId = empId;
+		this.mgrId = mgrId;
+		this.reimbursementDesc = reimbursementDesc;
+		this.reimbursementAmt = reimbursement_amt;
+		this.reimbursementStatus = reimbursement_status;
+	}
+
+	public int getReimbursementId() {
+		return reimbursementId;
+	}
+
+	public void setReimbursementId(int reimbursement_id) {
+		this.reimbursementId = reimbursement_id;
+	}
+
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(int emp_id) {
+		this.empId = emp_id;
+	}
+
+	public int getMgrId() {
+		return mgrId;
+	}
+
+	public void setMgrId(int mgr_id) {
+		this.mgrId = mgr_id;
+	}
+
+	public String getReimbursementDesc() {
+		return reimbursementDesc;
+	}
+
+	public void setReimbursementDesc(String reimbursement_desc) {
+		this.reimbursementDesc = reimbursement_desc;
+	}
+
+	public Double getReimbursementAmt() {
+		return reimbursementAmt;
+	}
+
+	public void setReimbursementAmt(Double reimbursement_amt) {
+		this.reimbursementAmt = reimbursement_amt;
+	}
+
+	public String getReimbursementStatus() {
+		return reimbursementStatus;
+	}
+
+	public void setReimbursementStatus(String reimbursement_status) {
+		this.reimbursementStatus = reimbursement_status;
+	}
+
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(empId, mgrId, reimbursementAmt, reimbursementDesc, reimbursementId,
+				reimbursementStatus);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ReimbursementPojo other = (ReimbursementPojo) obj;
+		return empId == other.empId && mgrId == other.mgrId
+				&& Objects.equals(reimbursementAmt, other.reimbursementAmt)
+				&& Objects.equals(reimbursementDesc, other.reimbursementDesc)
+				&& reimbursementId == other.reimbursementId
+				&& Objects.equals(reimbursementStatus, other.reimbursementStatus);
+	}
+
+	@Override
+	public String toString() {
+		return "ReimbursementPojo [reimbursementId=" + reimbursementId + ", empId=" + empId + ", mgrId=" + mgrId
+				+ ", reimbursementDesc=" + reimbursementDesc + ", reimbursementAmt=" + reimbursementAmt
+				+ ", reimbursementStatus=" + reimbursementStatus + "]";
+	}
+	
+	
+	
+}

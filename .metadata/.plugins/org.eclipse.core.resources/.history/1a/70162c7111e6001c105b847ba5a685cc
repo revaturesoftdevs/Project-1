@@ -1,0 +1,67 @@
+package service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import dao.EmployeeDao;
+import dao.EmployeeDaoImpl;
+import exception.SystemException;
+import model.EmployeePojo;
+import model.ReimbursementPojo;
+
+public class EmployeeServiceImpl implements EmployeeService{
+	
+	EmployeeDao employeeDao;
+	
+	
+	public EmployeeServiceImpl() {
+		
+		employeeDao = new EmployeeDaoImpl();
+	}
+	
+	public EmployeeDao getEmployeeDao() {
+		return employeeDao;
+	}
+	
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+	
+	
+	@Override
+	public EmployeePojo login(EmployeePojo employeePojo)throws SystemException{
+		
+		// login validation goes here!
+		return employeeDao.login(employeePojo);
+
+	}
+
+	@Override
+	public List<ReimbursementPojo> viewPendingReimbursements(int emp_id){
+
+		return employeeDao.viewPendingReimbursements(emp_id);
+	}
+
+	@Override
+	public List<ReimbursementPojo> viewResolvedReimbursements(int emp_id){
+
+		return employeeDao.viewResolvedReimbursements(emp_id);
+	}
+
+	@Override
+	public EmployeePojo viewEmployeeProfile(int emp_id){
+
+		return employeeDao.viewEmployeeProfile(emp_id);
+	}
+
+	@Override
+	public EmployeePojo modifyEmployee(int emp_id, EmployeePojo employeePojo){
+		return employeeDao.modifyEmployee(emp_id, employeePojo);
+	}
+
+	@Override
+	public boolean addReimbursment(ReimbursementPojo reimburse) {
+		return employeeDao.addReimbursment(reimburse);
+	}
+
+}

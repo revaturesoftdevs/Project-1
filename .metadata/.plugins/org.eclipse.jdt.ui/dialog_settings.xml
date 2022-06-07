@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="delegateUpdating" value="false"/>
+	<section name="JavaElementSearchActions">
+	</section>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="RenameInformationPopup">
+		<item key="snap_position" value="2"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="renameGetter" value="true"/>
+		<item key="renameSetter" value="true"/>
+		<item key="updateTextualMatches" value="true"/>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item key="width" value="600"/>
+		<item key="height" value="400"/>
+	</section>
+</section>

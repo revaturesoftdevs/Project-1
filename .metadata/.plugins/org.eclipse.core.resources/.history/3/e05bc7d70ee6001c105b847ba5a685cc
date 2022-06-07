@@ -1,0 +1,186 @@
+import java.util.List;
+
+import io.javalin.Javalin;
+import service.EmployeeService;
+import service.EmployeeServiceImpl;
+import service.ManagerService;
+import service.ManagerServiceImpl;
+import model.EmployeePojo;
+import model.ManagerPojo;
+import model.ReimbursementPojo;
+
+public class ReimbursmentCrud {
+
+
+
+	public static void main(String[] args) {
+
+		ManagerService managerService = new ManagerServiceImpl();
+		EmployeeService empService= new EmployeeServiceImpl();
+
+		Javalin server = Javalin.create((config) -> config.enableCorsForAllOrigins()); 
+		server.start(7474); 
+		
+		//employee - Done
+		server.post("/loginEmp", (ctx)->{
+			EmployeePojo newEmpPojo= ctx.bodyAsClass(EmployeePojo.class);
+			EmployeePojo returnEmpPojo= empService.login(newEmpPojo);
+			ctx.json(returnEmpPojo);
+		});
+		
+		//employee - Done
+		server.post("/addReimbursement", (ctx) -> {
+
+				ReimbursementPojo newReimbursement = ctx.bodyAsClass(ReimbursementPojo.class);
+				boolean returnedReimbursementPojo = empService.addReimbursment(newReimbursement);
+				ctx.json(returnedReimbursementPojo);
+
+			});
+
+
+		//employee - Done
+		server.get("/profile/{eid}",(ctx)->{
+			String emp_id= ctx.pathParam("eid");
+			int emp_idInteger= Integer.parseInt(emp_id);
+			EmployeePojo empProfile= empService.viewEmployeeProfile(emp_idInteger);
+			ctx.json(empProfile);
+		});
+
+		//employee - Done/front end 
+		server.put("/UpdateEmp/{eid}", (ctx) -> {
+			EmployeePojo newEmployeePojo = ctx.bodyAsClass(EmployeePojo.class);
+			String emp_id= ctx.pathParam("eid");
+			int emp_idInteger= Integer.parseInt(emp_id);
+			EmployeePojo returnUpdatedEmployeePojo = empService.modifyEmployee(emp_idInteger, newEmployeePojo);
+			ctx.json(returnUpdatedEmployeePojo);
+
+		});
+		 
+		//employee-Done it gave me empty array
+		server.get("/EmpPendingReimbursements/{eid}", (ctx) -> {
+			String emp_id= ctx.pathParam("eid");
+			int emp_idInteger= Integer.parseInt(emp_id);
+			List<ReimbursementPojo> allPendingReimbursments = empService.viewPendingReimbursements(emp_idInteger);
+			ctx.json(allPendingReimbursments);
+
+		});
+
+		//employee-Done
+		server.get("/EmpResolvedReimbursements/{eid}", (ctx) -> {
+
+			String emp_id= ctx.pathParam("eid");
+			int emp_idInteger= Integer.parseInt(emp_id);
+			List<ReimbursementPojo> allResolvedReimbursments = empService.viewResolvedReimbursements(emp_idInteger);
+			ctx.json(allResolvedReimbursments);
+
+		});
+
+		
+		//manager - Done
+		server.post("/loginManager", (ctx) -> {
+
+			ManagerPojo newManagerPojo = ctx.bodyAsClass(ManagerPojo.class);
+			System.out.println(newManagerPojo);
+			ManagerPojo returnNewManagerPojo = managerService.Login(newManagerPojo);
+			ctx.json(returnNewManagerPojo);
+		});
+
+		//manager - Done
+		server.get("/ResolvedReimbursements/{mid}", (ctx) -> {
+
+			String mgr_id = ctx.pathParam("mid");
+			int mgr_idInteger = Integer.parseInt(mgr_id);
+			List<ReimbursementPojo> allResolvedReimbursments = managerService
+					.viewAllResolvedReimbursements(mgr_idInteger);
+			ctx.json(allResolvedReimbursments);
+
+		});
+
+		//manager - Done
+//		server.get("/PendingReimbursements/{mid}", (ctx) -> {
+//
+//			String mgr_id = ctx.pathParam("mid");
+//			int mgr_idInteger = Integer.parseInt(mgr_id);
+//			List<ReimbursementPojo> allPendingReimbursments = managerService
+//					.viewAllPendingReimbursements(mgr_idInteger);
+//			ctx.json(allPendingReimbursments);
+//
+//		});
+		
+		server.get("/PendingReimbursements/{mid}", (ctx) -> {
+
+			String mgr_id = ctx.pathParam("mid");
+			int mgr_idInteger = Integer.parseInt(mgr_id);
+			List<ReimbursementPojo> allPendingReimbursments = managerService.viewAllPendingReimbursements(mgr_idInteger);
+			ctx.json(allPendingReimbursments);
+		});
+
+		
+		
+		
+
+		//manager - Done
+		server.get("/IndividualReimbursements/{mid}/{eid}", (ctx) -> {
+
+			String mgr_id = ctx.pathParam("mid");
+			String emp_id = ctx.pathParam("eid");
+			int mgr_idInteger = Integer.parseInt(mgr_id);
+			int emp_idInteger = Integer.parseInt(emp_id);
+			List<ReimbursementPojo> individualReimbursments = managerService.viewIndividualReimbursement(mgr_idInteger,
+					emp_idInteger);
+			ctx.json(individualReimbursments);
+
+		});
+
+		//manager - Done
+		server.get("/AllEmployees/{mid}", (ctx) -> {
+
+			String mgr_id = ctx.pathParam("mid");
+			int mgr_idInteger = Integer.parseInt(mgr_id);
+			List<EmployeePojo> allEmployees = managerService.viewAllEmployees(mgr_idInteger);
+			ctx.json(allEmployees);
+
+		});
+
+//		server.put("/approveReimbursement/{eid}{rid}", (ctx) -> {
+//
+//			String emp_id = ctx.pathParam("eid");
+//			int rid_idInteger = Integer.parseInt(emp_id);
+//			String reimbursement_id = ctx.pathParam("eid");
+//			int emp_idInteger = Integer.parseInt(emp_id);
+//			managerService.approveReimbursement(emp_idInteger);
+//
+//		});
+		
+		server.put("/approveReimbursement/{eid}/{rid}", (ctx) -> {
+
+			String reimbursement_id = ctx.pathParam("rid");
+			String emp_id = ctx.pathParam("eid");
+			int reimb_idInteger = Integer.parseInt(reimbursement_id);
+			int emp_idInteger = Integer.parseInt(emp_id);
+			managerService.denyReimbursement(emp_idInteger,reimb_idInteger);
+
+		});
+
+		server.put("/denyReimbursement/{eid}/{rid}",(ctx)-> {
+			String reimbursement_id = ctx.pathParam("rid");
+			String emp_id = ctx.pathParam("eid");
+			int reimb_idInteger = Integer.parseInt(reimbursement_id);
+			int emp_idInteger = Integer.parseInt(emp_id);
+			managerService.denyReimbursement(emp_idInteger,reimb_idInteger);
+			
+		});
+
+		
+//		server.put("/denyReimbursement/{eid}{rid}",(ctx)-> {
+//			String emp_id = ctx.pathParam("eid");
+//			int empIdInteger = Integer.parseInt(emp_id);
+//			managerService.denyReimbursement(empIdInteger);
+//			
+//		});
+
+
+		
+//		
+	}
+}

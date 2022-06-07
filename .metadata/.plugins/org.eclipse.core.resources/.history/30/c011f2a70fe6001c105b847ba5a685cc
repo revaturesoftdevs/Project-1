@@ -1,0 +1,123 @@
+package model;
+
+import java.util.Objects;
+
+public class ReimbursementPojo {
+	
+	int reimbursementId;
+	int empId;
+	int mgrId;
+	String reimbursement_desc;
+	Double reimbursement_amt;
+	String reimbursement_status;
+	
+
+
+	public ReimbursementPojo() {
+		
+	}
+
+	
+	public ReimbursementPojo(int emp_id, int mgr_id, String reimbursement_desc, Double reimbursement_amt,
+			String reimbursement_status) {
+		
+		this.empId = emp_id;
+		this.mgrId = mgr_id;
+		this.reimbursement_desc = reimbursement_desc;
+		this.reimbursement_amt = reimbursement_amt;
+		this.reimbursement_status = reimbursement_status;
+	}
+
+
+	public ReimbursementPojo(int reimbursement_id, int emp_id, int mgr_id, String reimbursement_desc,
+			Double reimbursement_amt, String reimbursement_status) {
+		
+		this.reimbursementId = reimbursement_id;
+		this.empId = emp_id;
+		this.mgrId = mgr_id;
+		this.reimbursement_desc = reimbursement_desc;
+		this.reimbursement_amt = reimbursement_amt;
+		this.reimbursement_status = reimbursement_status;
+	}
+
+	public int getReimbursementId() {
+		return reimbursementId;
+	}
+
+	public void setReimbursementId(int reimbursement_id) {
+		this.reimbursementId = reimbursement_id;
+	}
+
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(int emp_id) {
+		this.empId = emp_id;
+	}
+
+	public int getMgrId() {
+		return mgrId;
+	}
+
+	public void setMgrId(int mgr_id) {
+		this.mgrId = mgr_id;
+	}
+
+	public String getReimbursement_desc() {
+		return reimbursement_desc;
+	}
+
+	public void setReimbursement_desc(String reimbursement_desc) {
+		this.reimbursement_desc = reimbursement_desc;
+	}
+
+	public Double getReimbursement_amt() {
+		return reimbursement_amt;
+	}
+
+	public void setReimbursement_amt(Double reimbursement_amt) {
+		this.reimbursement_amt = reimbursement_amt;
+	}
+
+	public String getReimbursement_status() {
+		return reimbursement_status;
+	}
+
+	public void setReimbursement_status(String reimbursement_status) {
+		this.reimbursement_status = reimbursement_status;
+	}
+
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(empId, mgrId, reimbursement_amt, reimbursement_desc, reimbursementId,
+				reimbursement_status);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ReimbursementPojo other = (ReimbursementPojo) obj;
+		return empId == other.empId && mgrId == other.mgrId
+				&& Objects.equals(reimbursement_amt, other.reimbursement_amt)
+				&& Objects.equals(reimbursement_desc, other.reimbursement_desc)
+				&& reimbursementId == other.reimbursementId
+				&& Objects.equals(reimbursement_status, other.reimbursement_status);
+	}
+
+	@Override
+	public String toString() {
+		return "ReimbursementPojo [reimbursementId=" + reimbursementId + ", empId=" + empId + ", mgrId=" + mgrId
+				+ ", reimbursement_desc=" + reimbursement_desc + ", reimbursement_amt=" + reimbursement_amt
+				+ ", reimbursement_status=" + reimbursement_status + "]";
+	}
+	
+	
+	
+}

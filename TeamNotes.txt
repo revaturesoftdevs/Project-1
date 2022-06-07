@@ -1,0 +1,46 @@
+Berly
+Goldendeep kaurgoldendeep@gmail.com
+Anil devarianil415@gmail.com
+
+Meeting ID: 836 5899 8571
+Passcode: 071028
+
+psql --host=my-postgres-db-instance.cu66ijiafnhk.us-east-1.rds.amazonaws.com --port=5432 --username=postgres
+group5dev
+
+revaturesoftdevs@yahoo.com
+revdev2022
+
+…or create a new repository on the command line
+echo "# Project-1" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/revaturesoftdevs/Project-1.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/revaturesoftdevs/Project-1.git
+git branch -M main
+git push -u origin main
+
+
+git switch main            // pull / clone original repo to work from the project structure
+git pull origin main       //
+
+
+//---- login, switch to your branch, add files as usual,
+//---- git push origin your-branch, then you're done  **dont merge with main**
+
+
+git switch (your branch name)
+git add . 
+git commit -m "add features descriptions"
+git push origin (your branch name)
+
+
+//---- don't do these steps until we are all together & discuss
+git switch main //
+git merge (your branch name) //
+git push origin main //
